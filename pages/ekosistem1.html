@@ -15,6 +15,7 @@
             <a-asset-item id="deer" src="/assets/deer_idle/scene.gltf"></a-asset-item>
             <a-asset-item id="grass1" src="/assets/grass1/scene.gltf"></a-asset-item>
             <a-asset-item id="grass2" src="/assets/grass2/scene.gltf"></a-asset-item>
+            <a-asset-item id="birds" src="/assets/birds/scene.gltf"></a-asset-item>
         </a-assets>
         
         <a-sound src="#bgMusic" autoplay="true" loop="true" volume="1"></a-sound>
@@ -49,6 +50,37 @@
         <!-- OBJEK -->
         <a-entity gltf-model="#deer" position="15 -10 -15" scale="2 2 2" rotation="0 -120 0" animation-mixer></a-entity>
         <a-entity gltf-model="#grass2" position="-80 -10 -15" scale="1 1 1" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass2" position="90 -10 -15" scale="1 1 1" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
+        <!-- Burung dengan animasi -->
+        <a-entity id="bird" gltf-model="#birds" position="-5 10 10" scale="3 3 3" rotation="10 0 -3" 
+                  animation-mixer="clip: *; timeScale: 1 " 
+                  animation="property: position; to: 5 20 -70; dur: 10000; easingOut: linear; loop: true ; easeIn : linear ">
+        </a-entity>
+
+        <!-- Mengembalikan burung ke posisi awal -->
+ 
+        <a-entity gltf-model="#birds" position="5 20 -60" scale="1 1 1" rotation="0 0 -10" color ="#66FF6"animation-mixer></a-entity>
+
+        <script>
+            // Ambil referensi ke burung
+            const bird = document.querySelector('#bird');
+    
+            // Fungsi untuk mengulang animasi burung
+            function restartBirdAnimation() {
+                bird.setAttribute('animation', 'property: position; to: 5 20 -70; dur: 10000; easing: linear; loop: false');
+                bird.setAttribute('visible', 'true'); // Tampilkan burung
+                bird.emit('start-animation'); // Emit event untuk memulai animasi
+            }
+    
+            // Event listener untuk menyelesaikan animasi
+            bird.addEventListener('animationcomplete', function () {
+                bird.setAttribute('visible', 'false'); // Sembunyikan burung saat animasi selesai
+                setTimeout(restartBirdAnimation, 3000); // Jeda 3 detik sebelum memulai ulang
+            });
+    
+            // Inisialisasi animasi
+            bird.emit('start-animation');
+        </script>
     </a-scene>
 </body>
 </html>
