@@ -22,12 +22,13 @@
          event-set__mouseleave="_event: mouseleave; animation: property: scale; to: 1 1 1; dur: 300; easing: easeOutElastic">
         </a-sky>
         <a-light type="directional" color="#FFFF" intensity="3" position="-1 1 0"></a-light>
-        <a-camera position="-5  1 0" fov="100" wasd-controls look-controls></a-camera>
-
+        <a-camera position="-5  1 0" fov="100" wasd-controls look-controls>
+            <a-plane id="infoPanel" position="0 0 -6" width="11" height="7" color="#333" material="opacity: 0.6"
+                     text="value: Informasi; color: white; align: center">
+            </a-plane>
+        </a-camera>
         <a-sound src="#bgMusic" autoplay="true" loop="true" volume="1"></a-sound>
-
         <a-entity gltf-model="#deer" position="10 -8 -5" scale="1.5 1.5 1.5" rotation="0 -120 0" animation-mixer></a-entity>
-
 
     </a-scene>
 </body>
