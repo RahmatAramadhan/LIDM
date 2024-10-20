@@ -14,8 +14,13 @@
             <audio id="bgMusic" src="/assets/suara_alam.mp3"></audio>
             <a-asset-item id="deer" src="/assets/deer_idle/scene.gltf"></a-asset-item>
             <a-asset-item id="grass" src="/assets/grass3/scene.gltf"></a-asset-item>
-            <a-asset-item id="grass" src="/assets/grass3/scene.gltf"></a-asset-item>
+            <a-asset-item id="grass1" src="/assets/grass1/scene.gltf"></a-asset-item>
+            <a-asset-item id="grass2" src="/assets/grass2/scene.gltf"></a-asset-item>
+            <a-asset-item id="grass3" src="/assets/grass3/scene.gltf"></a-asset-item>
             <a-asset-item id="birds" src="/assets/birds/scene.gltf"></a-asset-item>
+            <a-asset-item id="grasshoper" src="/assets/grassroot/scene.gltf"></a-asset-item>
+            <a-asset-item id="orchid" src="/assets/orchid/scene.gltf"></a-asset-item>
+
             <a-asset-item id="grasshopper" src="/assets/grasshopper/scene.gltf"></a-asset-item>
         </a-assets>
         
@@ -50,6 +55,12 @@
 
         <!-- OBJEK -->
         <a-entity gltf-model="#deer" position="15 -10 -15" scale="2 2 2" rotation="0 -120 0" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass3" id = "#grass3"position="-110 -10 -15" scale="10 10 10" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grasshoper" id="#grasshoper" position="0.26628 2.37179 -0.50584" scale="100 100 100" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass3" id="#grass3" position="-105 -10 -30" scale="10 10 10" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass3" id="#grass3" position="-95 -10 -40" scale="10 10 10" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#orchid" id="#orchid" position="145.824 180 45.422" scale="30 30 30" rotation="136.26 155 291.45" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#orchid" id="#orchid2" position="-102.731 220.875 354.32" scale="40 40 40" rotation="4.72 -103.86 117.46" color ="#66FF6"animation-mixer></a-entity>
         <a-entity gltf-model="#grass" id="grass1" position="-130.51 -10.667 4" scale="10 10 10" rotation="0 0 -25.51" color ="#66FF6"animation-mixer></a-entity>
         <a-entity gltf-model="#grass" id="grass2" position="-105 -10 -15" scale="10 10 10" rotation="0 0 -20.62" color ="#66FF6"animation-mixer></a-entity>
         <a-entity gltf-model="#grass" id="grass3" position="-95 -10 -33.2" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
@@ -65,33 +76,11 @@
         <a-entity gltf-model="#grasshopper" id="grasshopper" position="-77.312 -2.354 -35.625" scale="1000 1000 1000" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
         
         <!-- Burung dengan animasi -->
-        <a-entity id="bird" gltf-model="#birds" position="-5 10 10" scale="3 3 3" rotation="10 0 -3" 
+        <a-entity id="#birds" gltf-model="#birds" position="0.72268 14.383 -4.6" scale="3 3 3" rotation="-5 2.93 10" 
                   animation-mixer="clip: *; timeScale: 1 " 
-                  animation="property: position; to: 20 40 -300; dur: 10000; easingOut: linear; loop: true; easeIn : linear ">
+                  animation="property: position; to: 2.744 40 -300; dur: 20000; easingOut: linear; loop: true; pauseEvents: 30000; easeIn : linear ">  
         </a-entity>
 
-        <!-- Mengembalikan burung ke posisi awal -->
+        
  
-        <script>
-            // Ambil referensi ke burung
-            const bird = document.querySelector('#bird');
-    
-            // Fungsi untuk mengulang animasi burung
-            function restartBirdAnimation() {
-                bird.setAttribute('animation', 'property: position; to: 5 20 -70; dur: 10000; easing: linear; loop: false');
-                bird.setAttribute('visible', 'true'); // Tampilkan burung
-                bird.emit('start-animation'); // Emit event untuk memulai animasi
-            }
-    
-            // Event listener untuk menyelesaikan animasi
-            bird.addEventListener('animationcomplete', function () {
-                bird.setAttribute('visible', 'false'); // Sembunyikan burung saat animasi selesai
-                setTimeout(restartBirdAnimation, 3000); // Jeda 3 detik sebelum memulai ulang
-            });
-    
-            // Inisialisasi animasi
-            bird.emit('start-animation');
-        </script>
-    </a-scene>
-</body>
-</html>
+        
