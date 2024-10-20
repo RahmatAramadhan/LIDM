@@ -15,6 +15,7 @@
             <a-asset-item id="deer" src="/assets/deer_idle/scene.gltf"></a-asset-item>
             <a-asset-item id="grass1" src="/assets/grass1/scene.gltf"></a-asset-item>
             <a-asset-item id="grass2" src="/assets/grass2/scene.gltf"></a-asset-item>
+            <a-asset-item id="grass3" src="/assets/grass3/scene.gltf"></a-asset-item>
             <a-asset-item id="birds" src="/assets/birds/scene.gltf"></a-asset-item>
         </a-assets>
         
@@ -49,12 +50,14 @@
 
         <!-- OBJEK -->
         <a-entity gltf-model="#deer" position="15 -10 -15" scale="2 2 2" rotation="0 -120 0" animation-mixer></a-entity>
-        <a-entity gltf-model="#grass2" position="-80 -10 -15" scale="1 1 1" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass2" position="90 -10 -15" scale="1 1 1" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass3" position="-110 -10 -15" scale="10 10 10" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass3" position="-105 -10 -30" scale="10 10 10" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass3" position="-95 -10 -40" scale="10 10 10" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
+        
         <!-- Burung dengan animasi -->
         <a-entity id="bird" gltf-model="#birds" position="-5 10 10" scale="3 3 3" rotation="10 0 -3" 
                   animation-mixer="clip: *; timeScale: 1 " 
-                  animation="property: position; to: 20 40 -300; dur: 20000; easingOut: linear; loop: true ; easeIn : linear ">
+                  animation="property: position; to: 20 40 -300; dur: 10000; easingOut: linear; loop: true; easeIn : linear ">
         </a-entity>
 
         <!-- Mengembalikan burung ke posisi awal -->
