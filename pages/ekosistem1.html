@@ -14,10 +14,12 @@
             <audio id="bgMusic" src="/assets/suara_alam.mp3"></audio>
             <a-asset-item id="deer" src="/assets/deer_idle/scene.gltf"></a-asset-item>
             <a-asset-item id="grass" src="/assets/grass3/scene.gltf"></a-asset-item>
+            <a-asset-item id="grass" src="/assets/grass3/scene.gltf"></a-asset-item>
             <a-asset-item id="birds" src="/assets/birds/scene.gltf"></a-asset-item>
+            <a-asset-item id="grasshopper" src="/assets/grasshopper/scene.gltf"></a-asset-item>
         </a-assets>
         
-        <a-sound src="#bgMusic" autoplay="true" loop="true" volume="1"></a-sound>
+        <!-- <a-sound src="#bgMusic" autoplay="true" loop="true" volume="1"></a-sound> -->
 
         <a-sky id="skybox" src="#point1" rotation="0 -90 0" material="mipmap: true;"
         rotation="0 45 0"
@@ -48,9 +50,19 @@
 
         <!-- OBJEK -->
         <a-entity gltf-model="#deer" position="15 -10 -15" scale="2 2 2" rotation="0 -120 0" animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass1" position="-110 30.23509 -15" scale="10 10 10" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass2" position="-105 -10 -30" scale="10 10 10" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass3" position="-95 -10 -40" scale="10 10 10" rotation="0 90 0" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass1" position="-130.51 -10.667 4" scale="10 10 10" rotation="0 0 -25.51" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass2" position="-105 -10 -15" scale="10 10 10" rotation="0 0 -20.62" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass3" position="-95 -10 -33.2" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass4" position="-106.60538 -10 -4.89013" scale="10 10 10" rotation="0 0 -20.04" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass5" position="-95 -11.21259 -24.0916" scale="10 10 10" rotation="0 0 -18.72" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass6" position="-113.71803 -11.24064 -51.60672" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass7" position="81.64138 -55.91131 -87.23575" scale="10 10 10" rotation="0 0 20" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass8" position="102.08347 -63.96846 -89.77487" scale="10 10 10" rotation="0 0 20" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass9" position="89.78585 -43.3382 197.84049" scale="30 30 10" rotation="0 0 14" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass10" position="134.47031 -82.00114 -103.60455" scale="10 10 10" rotation="0 0 30" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass11" position="-113.718 -11.241 -51.607" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass12" position="-113.71803 -11.24064 -51.60672" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
+        <a-entity gltf-model="#grasshopper" id="grasshopper" position="-77.312 -2.354 -35.625" scale="1000 1000 1000" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
         
         <!-- Burung dengan animasi -->
         <a-entity id="bird" gltf-model="#birds" position="-5 10 10" scale="3 3 3" rotation="10 0 -3" 
