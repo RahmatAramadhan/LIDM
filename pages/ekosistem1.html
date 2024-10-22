@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,13 @@
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.0/dist/aframe-extras.min.js"></script>
     <title>LIDM</title>
 </head>
+
 <body>
     <a-scene renderer="pixelRatio: 2">
         <a-assets>
-            <img id="point1" src="/assets/ekosistem1.webp"/> 
-            <audio id="bgMusic" src="/assets/suara_alam.mp3"></audio>
+            <img id="point1" src="/assets/ekosistem1.webp" />
+            <audio id="background-music" src="/assets/suara_alam.mp3"></audio>
+            <audio id="voice-over" src="/assets/voice-over/Script-1.mp3"></audio>
             <a-asset-item id="deer" src="/assets/deer_idle/scene.gltf"></a-asset-item>
             <a-asset-item id="grass" src="/assets/grass3/scene.gltf"></a-asset-item>
             <a-asset-item id="birds" src="/assets/birds/scene.gltf"></a-asset-item>
@@ -20,13 +23,13 @@
 
             <a-asset-item id="grasshopper" src="/assets/grasshopper/scene.gltf"></a-asset-item>
         </a-assets>
-        
-        <!-- <a-sound src="#bgMusic" autoplay="true" loop="true" volume="1"></a-sound> -->
 
-        <a-sky id="skybox" src="#point1" rotation="0 -90 0" material="mipmap: true;"
-        rotation="0 45 0"
-        event-set__mouseenter="_event: mouseenter; animation: property: scale; to: 1.05 1.05 1.05; dur: 300; easing: easeOutElastic"
-         event-set__mouseleave="_event: mouseleave; animation: property: scale; to: 1 1 1; dur: 300; easing: easeOutElastic">
+        <a-sound src="#background-music" autoplay="true" loop="true" volume="1"></a-sound>
+        <a-sound src="#voice-over" autoplay="true" volume="3"></a-sound>
+
+        <a-sky id="skybox" src="#point1" rotation="0 -90 0" material="mipmap: true;" rotation="0 45 0"
+            event-set__mouseenter="_event: mouseenter; animation: property: scale; to: 1.05 1.05 1.05; dur: 300; easing: easeOutElastic"
+            event-set__mouseleave="_event: mouseleave; animation: property: scale; to: 1 1 1; dur: 300; easing: easeOutElastic">
         </a-sky>
 
         <!-- LIGHT 1 -->
@@ -39,7 +42,7 @@
 
         <!-- LIGHT 3 -->
 
-            </a-plane>
+        </a-plane>
         <!-- CAMERA -->
         <!-- <a-camera position="-5  1 0" fov="100" wasd-controls look-controls>
             <a-plane id="infoPanel" position="0 0 -6" width="11" height="7" color="#333" material="opacity: 0.6"
@@ -52,28 +55,43 @@
 
         <!-- OBJEK -->
         <a-entity gltf-model="#deer" position="15 -10 -15" scale="2 2 2" rotation="0 -120 0" animation-mixer></a-entity>
-        <a-entity gltf-model="#orchid" id="#orchid" position="145.824 180 45.422" scale="30 30 30" rotation="136.26 155 291.45" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#orchid" id="#orchid2" position="-102.731 220.875 354.32" scale="40 40 40" rotation="4.72 -103.86 117.46" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass1" position="-130.51 -10.667 4" scale="10 10 10" rotation="0 0 -25.51" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass2" position="-105 -10 -15" scale="10 10 10" rotation="0 0 -20.62" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass3" position="-95 -10 -33.2" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass4" position="-106.60538 -10 -4.89013" scale="10 10 10" rotation="0 0 -20.04" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass5" position="-95 -11.21259 -24.0916" scale="10 10 10" rotation="0 0 -18.72" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass6" position="-113.71803 -11.24064 -51.60672" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass7" position="81.64138 -55.91131 -87.23575" scale="10 10 10" rotation="0 0 20" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass8" position="102.08347 -63.96846 -89.77487" scale="10 10 10" rotation="0 0 20" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass9" position="89.78585 -43.3382 197.84049" scale="30 30 10" rotation="0 0 14" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass10" position="134.47031 -82.00114 -103.60455" scale="10 10 10" rotation="0 0 30" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass11" position="-113.718 -11.241 -51.607" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass" id="grass12" position="-113.71803 -11.24064 -51.60672" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grasshopper" id="grasshopper" position="-77.312 -2.354 -35.625" scale="1000 1000 1000" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
-        
-        <!-- Burung dengan animasi -->
-        <a-entity id="#birds" gltf-model="#birds" position="0.72268 14.383 -4.6" scale="3 3 3" rotation="-5 2.93 10" 
-                  animation-mixer="clip: *; timeScale: 1 " 
-                  animation="property: position; to: 2.744 40 -300; dur: 20000; easingOut: linear; loop: true; pauseEvents: 30000; easeIn : linear ">  
-        </a-entity>
+        <a-entity gltf-model="#orchid" id="#orchid" position="145.824 180 45.422" scale="30 30 30"
+            rotation="136.26 155 291.45" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#orchid" id="#orchid2" position="-102.731 220.875 354.32" scale="40 40 40"
+            rotation="4.72 -103.86 117.46" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass1" position="-130.51 -10.667 4" scale="10 10 10" rotation="0 0 -25.51"
+            color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass2" position="-105 -10 -15" scale="10 10 10" rotation="0 0 -20.62"
+            color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass3" position="-95 -10 -33.2" scale="10 10 10" rotation="0 0 -14.52"
+            color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass4" position="-106.60538 -10 -4.89013" scale="10 10 10"
+            rotation="0 0 -20.04" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass5" position="-95 -11.21259 -24.0916" scale="10 10 10"
+            rotation="0 0 -18.72" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass6" position="-113.71803 -11.24064 -51.60672" scale="10 10 10"
+            rotation="0 0 -14.52" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass7" position="81.64138 -55.91131 -87.23575" scale="10 10 10"
+            rotation="0 0 20" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass8" position="102.08347 -63.96846 -89.77487" scale="10 10 10"
+            rotation="0 0 20" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass9" position="89.78585 -43.3382 197.84049" scale="30 30 10"
+            rotation="0 0 14" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass10" position="134.47031 -82.00114 -103.60455" scale="10 10 10"
+            rotation="0 0 30" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass11" position="-113.718 -11.241 -51.607" scale="10 10 10"
+            rotation="0 0 -14.52" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass" id="grass12" position="-113.71803 -11.24064 -51.60672" scale="10 10 10"
+            rotation="0 0 -14.52" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grasshopper" id="grasshopper" position="-77.312 -2.354 -35.625" scale="1000 1000 1000"
+            rotation="0 0 -14.52" color="#66FF6" animation-mixer></a-entity>
 
-        
- 
-        
+        <!-- Burung dengan animasi -->
+        <a-entity id="#birds" gltf-model="#birds" position="0.72268 14.383 -4.6" scale="3 3 3" rotation="-5 2.93 10"
+            animation-mixer="clip: *; timeScale: 1 "
+            animation="property: position; to: 2.744 40 -300; dur: 20000; easingOut: linear; loop: true; pauseEvents: 30000; easeIn : linear ">
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
