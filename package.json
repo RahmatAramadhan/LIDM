@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "a": "^3.0.1",
+    "aframe-watcher": "^1.4.0"
+  }
+}

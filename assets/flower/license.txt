@@ -1,0 +1,11 @@
+Model Information:
+* title:	Gerbera Daisies
+* source:	https://sketchfab.com/3d-models/gerbera-daisies-b4f61f6c4e764e18aa641da251624e96
+* author:	Tom (https://sketchfab.com/trbaker)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Gerbera Daisies" (https://sketchfab.com/3d-models/gerbera-daisies-b4f61f6c4e764e18aa641da251624e96) by Tom (https://sketchfab.com/trbaker) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
