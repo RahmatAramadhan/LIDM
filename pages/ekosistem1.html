@@ -17,8 +17,14 @@
             <a-asset-item id="birds" src="/assets/birds/scene.gltf"></a-asset-item>
             <a-asset-item id="grasshoper" src="/assets/grassroot/scene.gltf"></a-asset-item>
             <a-asset-item id="orchid" src="/assets/orchid/scene.gltf"></a-asset-item>
+            <a-asset-item id="mushrooms1" rotation="0.71 -1.21 20" scale="0.3 0.3 0.3" position="48.653 -16.852 -18.593" src="/assets/mushrooms1/scene.gltf"></a-asset-item>
+            <a-asset-item id="mushrooms2" src="/assets/mushrooms2/scene.gltf"></a-asset-item>
+            <a-asset-item id="mushrooms3" scale="1 1 1" position="-86.792 -12.074 -35.625" rotation="10 100 -2.47" src="/assets/mushrooms3/scene.gltf"></a-asset-item>
             <a-asset-item id="flower" rotation="0 119.99999999999999 -7.21" scale="20 20 20" position="183.82405 -148.94418 460.30104" src="/assets/flower/scene.gltf"></a-asset-item>
             <a-asset-item id="grasshopper" src="/assets/grasshopper/scene.gltf"></a-asset-item>
+            <a-asset-item id="butterfly1" scale="0.1 0.1 0.1" rotation="0.49000000000000005 30 -3.06" position="0 -30.34 79.11" src="/assets/butterfly1/scene.gltf"></a-asset-item>
+            <a-asset-item id="butterfly2" src="/assets/butterfly2/scene.gltf"></a-asset-item>
+
         </a-assets>
         
         <!-- <a-sound src="#bgMusic" autoplay="true" loop="true" volume="1"></a-sound> -->
@@ -62,15 +68,46 @@
         <a-entity gltf-model="#grass" id="grass10" position="134.47031 -82.00114 -103.60455" scale="10 10 10" rotation="0 0 30" color ="#66FF6"animation-mixer></a-entity>
         <a-entity gltf-model="#grass" id="grass11" position="-113.718 -11.241 -51.607" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
         <a-entity gltf-model="#grasshopper" id="grasshopper" position="-77.312 -2.354 -35.625" scale="1000 1000 1000" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
+        
+
+        <a-entity id="mushrooms-group1" rotation="0 -3.91 0" position="51.953 -12.022 -10.393">
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 0 -10" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-2" position="1.13 0.20491 3.09986" scale="0.3 0.3 0.3" rotation="2.04 -127.67 -9.41" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-3" position="1.43032 2.09018 0.93986" scale="0.2 0.2 0.2" rotation="0.34 -129.73 -10" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-4" position="-6.23 3.36 5.17" scale="0.2 0.2 0.2" rotation="0.34 90 -10" color="#66FF6" animation-mixer></a-entity>
+        </a-entity>
+        <a-entity id="mushrooms-group2" rotation="0 20 0" position="48.303 -13.80074 -13.81965">
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 0 -10" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-2" position="1.13 0.20491 3.09986" scale="0.3 0.3 0.3" rotation="2.04 -127.67 -9.41" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-3" position="1.43032 2.09018 0.93986" scale="0.2 0.2 0.2" rotation="0.34 -129.73 -10" color="#66FF6" animation-mixer></a-entity>
+        </a-entity>
+        <a-entity id="mushrooms-group3" position="48.653 -16.852 -18.593">
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 0 -10" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-2" position="1.13 0.20491 3.09986" scale="0.3 0.3 0.3" rotation="2.04 -127.67 -9.41" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-3" position="1.43032 2.09018 0.93986" scale="0.2 0.2 0.2" rotation="0.34 -129.73 -10" color="#66FF6" animation-mixer></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#mushrooms3" id="mushrooms3" position="-86.792 -12.074 -35.625" scale="1 1 1" rotation="10 100 -2.47" color ="#66FF6" animation-mixer></a-entity> 
         <a-entity gltf-model="#flower" id="flower1" position="235.329 -184.655 433.74228" scale="22 22 22" rotation="0 119.34 -3.06" color="#66FF6" animation-mixer=""></a-entity>
         <a-entity gltf-model="#flower" id="flower1-2" position="172.10041 -155.36307 496.58833" scale="22 22 22" rotation="0 119.34 -3.06" color="#66FF6" animation-mixer=""></a-entity>
         <a-entity gltf-model="#flower" id="flower2" position="59.31803 -173.77514 418.34637" scale="20 20 20" rotation="0 112.6 -3.06" color="#66FF6" animation-mixer=""></a-entity>
-        
+        <a-entity gltf-model="#butterfly1" id="#butterfly1" position="0 -30.34 79.11" scale="0.1 0.1 0.1" rotation="0.49 30 -3.06" color="#66FF6"  animation-mixer="clip: metarig|3; timeScale: 3"></a-entity>
+        <a-entity gltf-model="#butterfly1" id="#butterfly1.2" position="-14.43 -43.31 169.06" scale="0.1 0.1 0.1" delay="100"rotation="-15 60 -3.06" color="#66FF6"  animation-mixer="clip: metarig|3; timeScale: 2"></a-entity>
+        <a-entity gltf-model="#butterfly1" id="#butterfly1.3" rotation="-14.999999999999998 40 -3.06" position="26.02 -35.998 172.04" scale="0.1 0.1 0.1" delay="100"rotation="-15 60 -3.06" color="#66FF6"  animation-mixer="clip: metarig|!; timeScale: 2" loop = true></a-entity>
+        <a-entity gltf-model="#butterfly1" id="#butterfly1.4" position="38 -34.95 82.44" scale="0.1 0.1 0.1" rotation="0.49000000000000005 -20 -5.04" color="#66FF6"  animation-mixer="clip: metarig|2; timeScale: 3"></a-entity>
+        <a-entity gltf-model="#butterfly1" id="#butterfly1.5" position="36.13 -36.00057 120.71" scale="0.1 0.1 0.1" rotation="-59.99999999999999 -16.1 -2.4" color="#66FF6"  animation-mixer="clip: metarig|2; timeScale: 1"></a-entity>
+
         <!-- Burung dengan animasi -->
-        <a-entity id="#birds" gltf-model="#birds" position="0.72268 14.383 -4.6" scale="3 3 3" rotation="-5 2.93 10" 
+        <a-entity id="#birds" gltf-model="#birds" position="4.548 19.516 -63.79" scale="3 3 3" rotation="-5 2.93 10" 
                   animation-mixer="clip: *; timeScale: 1 " 
                   animation="property: position; to: 2.744 40 -300; dur: 20000; easingOut: linear; loop: true; pauseEvents: 30000; easeIn : linear ">  
         </a-entity>
+
+        <a-entity id="#birds" gltf-model="#birds-2g" position="2 19.516 -63.79" scale="3 3 3" rotation="-5 2.93 10" 
+                  animation-mixer="clip: *; timeScale: 1 " 
+                  animation="property: position; to: 2.744 40 -300; dur: 20000; easingOut: linear; loop: true; pauseEvents: 30000; easeIn : linear ">  
+        </a-entity>
+
+   
 
         
  
