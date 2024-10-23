@@ -33,7 +33,7 @@
         <a-assets>
             <img id="point1" src="/assets/ekosistem1.webp" />
             <audio id="background-music" src="/assets/suara_alam.mp3"></audio>
-            <audio id="voice-over" src="/assets/voice-over/Script-1.mp3" autoplay="" muted="" playsinline=""></audio>
+            <audio id="voice-over" src="/assets/voice-over/Script-1.mp3"  allow="autoplay"  playsinline=""></audio>
             <a-asset-item id="deer" src="/assets/deer_idle/scene.gltf"></a-asset-item>
             <a-asset-item id="grass1" src="/assets/grass3/scene.gltf"></a-asset-item>
             <a-asset-item id="grass2" src="/assets/grass3/scene.gltf"></a-asset-item>
@@ -60,6 +60,9 @@
             event-set__mouseenter="_event: mouseenter; animation: property: scale; to: 1.05 1.05 1.05; dur: 300; easing: easeOutElastic"
             event-set__mouseleave="_event: mouseleave; animation: property: scale; to: 1 1 1; dur: 300; easing: easeOutElastic">
         </a-sky>
+
+        <!-- Backround Music -->
+        <a-sound src="#background-music" autoplay="true" loop="true" volume="1"></a-sound>
 
         <!-- LIGHT 1 -->
         <a-light type="directional" color="#FFFF" intensity="3" position="-3 40 -80" rotation="10 0 0"></a-light>
