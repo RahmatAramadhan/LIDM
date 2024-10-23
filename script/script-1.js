@@ -1,3 +1,5 @@
+
+
 const Script = [
   { start: 2, end: 4, text: "Selamat datang di hutan Amazonia" },
   {

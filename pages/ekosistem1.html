@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.0/dist/aframe-extras.min.js"></script>
-    <script src="https://cdn.rawgit.com/FWeinb/subtitles.js/master/subtitles.js"></script>
 
     <title>LIDM</title>
     <style>
@@ -32,8 +31,8 @@
     <a-scene renderer="pixelRatio: 2">
         <a-assets>
             <img id="point1" src="/assets/ekosistem1.webp" />
-            <audio id="background-music" src="/assets/suara_alam.mp3"></audio>
-            <audio id="voice-over" src="/assets/voice-over/Script-1.mp3"  allow="autoplay"  playsinline=""></audio>
+            <audio id="background-music" src="/assets/suara_alam.mp3" muted="" playsinline=""></audio>
+            <audio id="voice-over" src="/assets/voice-over/Script-1.mp3"  muted="" playsinline=""></audio>
             <a-asset-item id="deer" src="/assets/deer_idle/scene.gltf"></a-asset-item>
             <a-asset-item id="grass1" src="/assets/grass3/scene.gltf"></a-asset-item>
             <a-asset-item id="grass2" src="/assets/grass3/scene.gltf"></a-asset-item>
@@ -72,18 +71,10 @@
 
         <a-light type="directional" color="#FFFF" intensity="5"></a-light>
 
-        <!-- LIGHT 3 -->
+        <!-- CAMERA 1 -->
+                <a-camera id="camera"  position="0 1.6 0"></a-camera>
 
         </a-plane>
-        <!-- CAMERA -->
-        <!-- <a-camera position="-5  1 0" fov="100" wasd-controls look-controls>
-            <a-plane id="infoPanel" position="0 0 -6" width="11" height="7" color="#333" material="opacity: 0.6"
-                     text="value: Informasi; color: white; align: center">
-            </a-plane>
-            <a-plane id="infoPanel" position="4 -4.2 -6" width="3" height="1" color="#333" material="opacity: 0.6"
-                     text="value: Previuos; color: white; align: center" width="10">
-            </a-plane>
-        </a-camera> -->
 
         <!-- OBJEK -->
         <a-entity gltf-model="#deer" id="deer1" position="15 -10 -15" scale="2 2 2" rotation="0 -120 0" animation-mixer></a-entity>
@@ -167,28 +158,77 @@
         <!-- Materi 1 -->
         <script src="../script/script-1.js"></script>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const subtitle = document.getElementById('subtitle');
-                const audio = document.getElementById('voice-over');
-                const scene = document.querySelector('a-scene');
+        document.addEventListener('DOMContentLoaded', function () {
+            const subtitle = document.getElementById('subtitle');
+            const audio = document.getElementById('voice-over');
+            const scene = document.querySelector('a-scene');
+            const camera = document.getElementById('camera'); 
 
-                scene.addEventListener('loaded', () => {
-                    console.log("All assets have been loaded.");
-                    audio.play();
 
-                    audio.addEventListener('timeupdate', () => {
-                        const currentTime = audio.currentTime;
-                        const currentSubtitle = Script.find(sub => currentTime >= sub.start && currentTime <= sub.end);
+            // Coba menambahkan klik untuk mengizinkan pemutaran audio
+            scene.addEventListener('click', () => {
+                audio.muted = false;
+                audio.play().catch(error => {
+                    console.log("Playback error:", error);
+                });
+            });
 
-                        if (currentSubtitle) {
-                            subtitle.textContent = currentSubtitle.text;
-                        } else {
-                            subtitle.textContent = '';
-                        }
-                    });
+            scene.addEventListener('loaded', () => {
+                console.log("All assets have been loaded.");
+
+                audio.addEventListener('timeupdate', () => {
+                    const currentTime = audio.currentTime;
+                    const currentSubtitle = Script.find(sub => currentTime >= sub.start && currentTime <= sub.end);
+
+                    if (currentSubtitle) {
+                        subtitle.textContent = currentSubtitle.text;
+                    } else {
+                        subtitle.textContent = '';
+                    }
+
+                    if (currentTime >= 0 && currentTime < 5) {
+                // Animasi rotasi bersamaan (misal, memutar ke sudut tertentu)
+
+                // Animasi pertama: Kamera bergerak ke posisi tertentu
+                camera.setAttribute('animation', {
+                    property: 'position',
+                    to: '2 1.6 -5',
+                    dur: 5000,
+                    easing: 'easeInOutQuad'
                 });
 
-            });
-        </script>
 
+                } else if (currentTime >= 5 && currentTime < 10) {
+                    // Animasi kedua: Kamera berputar
+                    camera.setAttribute('look-controls', 'enabled', false);
+                    camera.setAttribute('animation', {
+                        property: 'rotation',
+                        to: '0 45 0',
+                        dur: 5000,
+                        easing: 'easeInOutQuad'
+                    });
+
+                    camera.setAttribute('animation__rotate', {
+                    property: 'rotation',
+                    to: '0 30 0',
+                    dur: 5000,
+                    easing: 'easeInOutQuad',
+                    loop: false,
+                    autoplay: true
+                });
+                
+                } else if (currentTime >= 10 && currentTime < 15) {
+                    // Animasi ketiga: Zoom in (dekatkan kamera)
+                    camera.setAttribute('rotation', '0 30 0'); // memperbarui rotasi kamera sesuai dengan kejadian sebelumnya
+                    camera.setAttribute('animation', {
+                        property: 'position',
+                        to: '1 1.6 -2',
+                        dur: 5000,
+                        easing: 'easeInOutQuad'
+                    });
+                }
+                });
+            });
+        });
+        </script>
 </body>
