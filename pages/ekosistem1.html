@@ -67,7 +67,8 @@
         <a-light type="directional" color="#FFFF" intensity="3" position="-3 40 -80" rotation="10 0 0"></a-light>
 
         <!-- LIGHT 2 -->
-        <a-light type="directional" color="#FFFF" intensity="3" position="-30 50 40" rotation="20 120 80"></a-light>
+        <a-light type="directional" color="#FFFF" intensity="3" position="0 50 40" rotation="20 120 80"></a-light>
+
 
         <a-light type="directional" color="#FFFF" intensity="5"></a-light>
 
@@ -232,3 +233,102 @@
         });
         </script>
 </body>
+
+
+           </a-plane>
+       <!-- CAMERA -->
+       <a-camera id="camera" camera position="0 0 0">
+           <a-entity
+             cursor="fuse: true; fuseTimeout: 2000"
+             raycaster="objects: .clickable"
+             position="0 0 -1"
+             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+             material="color: black; shader: flat"
+             animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1; startEvents: fusing;"
+             animation__reset="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 300"
+           ></a-entity>
+       </a-camera>
+
+       <!-- OBJEK -->
+
+       <a-entity id="panels" position="-11 2 -10" rotation="0 45 0" >
+           <!-- Objek a-plane dengan transisi masuk -->
+           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
+             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+             onclick="moveCamera('-11 2 -9', 'index.html')">
+           </a-plane>
+       </a-entity>
+       <a-entity id="panels" position="-4 2 -12.5" rotation="0 0 0">
+           <!-- Objek a-plane dengan transisi masuk -->
+           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
+             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+             onclick="moveCamera('-4 2 -11.5', 'EkosistemDetail.html')">
+           </a-plane>
+       </a-entity>
+
+       <a-entity id="panels" position="4 2 -12.5" rotation="0 0 0">
+           <!-- Objek a-plane dengan transisi masuk -->
+           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
+             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+             onclick="moveCamera('4 2 -11.5', 'RantaiMakanan.html')">
+           </a-plane>
+       </a-entity>
+
+
+       <a-entity id="panels" position="11 2 -10" rotation="0 -45 0" >
+           <!-- Objek a-plane dengan transisi masuk -->
+           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
+             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+             onclick="moveCamera('11 2 -9', 'InteraksiAM.html')">
+           </a-plane>
+       </a-entity>
+
+
+        
+        </a-scene>
+
+        </body>
+
+        </html>
+
+
+
+   
+
+            <!-- Untuk Panels Ekosistem -->
+    <script>
+        // Fungsi untuk menggerakkan kamera dengan input parameter 'to' dan 'targetPage'
+        function moveCamera(toPosition, targetPage) {
+            // Animasi kamera menuju a-plane dengan posisi yang ditentukan
+            document.querySelector('#camera').setAttribute('animation', {
+                property: 'position',
+                to: toPosition,
+                dur: 1500,
+                easing: 'easeInOutQuad'
+            });
+    
+            // Setelah animasi selesai, alihkan ke halaman yang ditentukan
+            setTimeout(function() {
+                window.location.href = targetPage;
+            }, 1500);  // Menunggu animasi selesai (1.5 detik)
+        }
+    
+        // Reset posisi kamera ke posisi awal saat halaman dimuat
+        window.onload = function() {
+            document.querySelector('#camera').setAttribute('position', '0 0 0');
+        };
+    </script>
+ 
+        
