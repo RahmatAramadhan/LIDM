@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.0/dist/aframe-extras.min.js"></script>
+
     <title>LIDM</title>
+    <style>
+        #subtitle {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            font-family: Arial, sans-serif;
+            z-index: 9999;
+        }
+    </style>
 </head>
+
 <body>
     <a-scene renderer="pixelRatio: 2">
         <a-assets>
-            <img id="point1" src="/assets/ekosistem1.webp"/> 
-            <audio id="bgMusic" src="/assets/suara_alam.mp3"></audio>
+            <img id="point1" src="/assets/ekosistem1.webp" />
+            <audio id="background-music" src="/assets/suara_alam.mp3" muted="" playsinline=""></audio>
+            <audio id="voice-over" src="/assets/voice-over/Script-1.mp3" muted="" playsinline=""></audio>
             <a-asset-item id="deer" src="/assets/deer_idle/scene.gltf"></a-asset-item>
             <a-asset-item id="grass1" src="/assets/grass3/scene.gltf"></a-asset-item>
             <a-asset-item id="grass2" src="/assets/grass3/scene.gltf"></a-asset-item>
@@ -20,171 +41,267 @@
             <a-asset-item id="birds" src="/assets/birds/scene.gltf"></a-asset-item>
             <a-asset-item id="grasshoper" src="/assets/grassroot/scene.gltf"></a-asset-item>
             <a-asset-item id="orchid" src="/assets/orchid/scene.gltf"></a-asset-item>
-            <a-asset-item id="mushrooms1" rotation="0.71 -1.21 20" scale="0.3 0.3 0.3" position="48.653 -16.852 -18.593" src="/assets/mushrooms1/scene.gltf"></a-asset-item>
+            <a-asset-item id="mushrooms1" rotation="0.71 -1.21 20" scale="0.3 0.3 0.3" position="48.653 -16.852 -18.593"
+                src="/assets/mushrooms1/scene.gltf"></a-asset-item>
             <a-asset-item id="mushrooms2" src="/assets/mushrooms2/scene.gltf"></a-asset-item>
-            <a-asset-item id="mushrooms3" scale="1 1 1" position="-86.792 -12.074 -35.625" rotation="10 100 -2.47" src="/assets/mushrooms3/scene.gltf"></a-asset-item>
-            <a-asset-item id="flower" rotation="0 119.99999999999999 -7.21" scale="20 20 20" position="183.82405 -148.94418 460.30104" src="/assets/flower/scene.gltf"></a-asset-item>
+            <a-asset-item id="mushrooms3" scale="1 1 1" position="-86.792 -12.074 -35.625" rotation="10 100 -2.47"
+                src="/assets/mushrooms3/scene.gltf"></a-asset-item>
+            <a-asset-item id="flower" rotation="0 119.99999999999999 -7.21" scale="20 20 20"
+                position="183.82405 -148.94418 460.30104" src="/assets/flower/scene.gltf"></a-asset-item>
             <a-asset-item id="grasshopper" src="/assets/grasshopper/scene.gltf"></a-asset-item>
-            <a-asset-item id="butterfly1" scale="0.1 0.1 0.1" rotation="0.49000000000000005 30 -3.06" position="0 -30.34 79.11" src="/assets/butterfly1/scene.gltf"></a-asset-item>
+            <a-asset-item id="butterfly1" scale="0.1 0.1 0.1" rotation="0.49000000000000005 30 -3.06"
+                position="0 -30.34 79.11" src="/assets/butterfly1/scene.gltf"></a-asset-item>
             <a-asset-item id="butterfly2" src="/assets/butterfly2/scene.gltf"></a-asset-item>
 
         </a-assets>
-        
-        <!-- <a-sound src="#bgMusic" autoplay="true" loop="true" volume="1"></a-sound> -->
 
-        <a-sky id="skybox" src="#point1" rotation="0 -90 0" material="mipmap: true;"
-        rotation="0 45 0"
-        event-set__mouseenter="_event: mouseenter; animation: property: scale; to: 1.05 1.05 1.05; dur: 300; easing: easeOutElastic"
-         event-set__mouseleave="_event: mouseleave; animation: property: scale; to: 1 1 1; dur: 300; easing: easeOutElastic">
+        <a-sky id="skybox" src="#point1" rotation="0 -90 0" material="mipmap: true;" rotation="0 45 0"
+            event-set__mouseenter="_event: mouseenter; animation: property: scale; to: 1.05 1.05 1.05; dur: 300; easing: easeOutElastic"
+            event-set__mouseleave="_event: mouseleave; animation: property: scale; to: 1 1 1; dur: 300; easing: easeOutElastic">
         </a-sky>
+
+        <!-- Backround Music -->
+        <a-sound src="#background-music" autoplay="true" loop="true" volume="1"></a-sound>
 
         <!-- LIGHT 1 -->
         <a-light type="directional" color="#FFFF" intensity="3" position="-3 40 -80" rotation="10 0 0"></a-light>
 
         <!-- LIGHT 2 -->
-        <a-light type="directional" color="#FFFF" intensity="3" position="0 50 40" rotation="20 120 80"></a-light>
-
+        <a-light type="directional" color="#FFFF" intensity="3" position="-30 50 40" rotation="20 120 80"></a-light>
 
         <a-light type="directional" color="#FFFF" intensity="5"></a-light>
 
-        <!-- LIGHT 3 -->
+        <!-- CAMERA 1 -->
+        <a-camera id="camera" position="0 1.6 0"></a-camera>
 
-            </a-plane>
-        <!-- CAMERA -->
-        <!-- <a-camera position="-5  1 0" fov="100" wasd-controls look-controls>
-            <a-plane id="infoPanel" position="0 0 -6" width="11" height="7" color="#333" material="opacity: 0.6"
-                     text="value: Informasi; color: white; align: center">
-            </a-plane>
-            <a-plane id="infoPanel" position="4 -4.2 -6" width="3" height="1" color="#333" material="opacity: 0.6"
-                     text="value: Previuos; color: white; align: center" width="10">
-            </a-plane>
-        </a-camera> -->
+        </a-plane>
 
         <!-- OBJEK -->
-        <a-entity gltf-model="#deer" id="deer1" position="15 -10 -15" scale="2 2 2" rotation="0 -120 0" animation-mixer></a-entity>
-        <a-entity gltf-model="#orchid" id="#orchid" position="145.824 180 45.422" scale="30 30 30" rotation="136.26 155 291.45" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#orchid" id="#orchid2" position="-102.731 220.875 354.32" scale="40 40 40" rotation="4.72 -103.86 117.46" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass1" id="grass1" position="-130.51 -10.667 4" scale="10 10 10" rotation="0 0 -25.51" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass2" id="grass2" position="-105 -10 -12.65559" scale="10 10 10" rotation="0 0 -20.62" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass3" id="grass3" position="-95 -10 -29.63889" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass4" id="grass7" position="81.64138 -55.91131 -87.23575" scale="10 10 10" rotation="0 0 20" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass1" id="grass8" position="102.08347 -63.96846 -89.77487" scale="10 10 10" rotation="0 0 20" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass3" id="grass11" position="-113.718 -11.241 -51.607" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grasshopper" id="grasshopper" position="-77.312 -2.354 -35.625" scale="1000 1000 1000" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
-        
+        <a-entity gltf-model="#deer" id="deer1" position="15 -10 -15" scale="2 2 2" rotation="0 -120 0"
+            animation-mixer></a-entity>
+        <a-entity gltf-model="#orchid" id="#orchid" position="145.824 180 45.422" scale="30 30 30"
+            rotation="136.26 155 291.45" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#orchid" id="#orchid2" position="-102.731 220.875 354.32" scale="40 40 40"
+            rotation="4.72 -103.86 117.46" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass1" id="grass1" position="-130.51 -10.667 4" scale="10 10 10" rotation="0 0 -25.51"
+            color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass2" id="grass2" position="-105 -10 -12.65559" scale="10 10 10" rotation="0 0 -20.62"
+            color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass3" id="grass3" position="-95 -10 -29.63889" scale="10 10 10" rotation="0 0 -14.52"
+            color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass4" id="grass7" position="81.64138 -55.91131 -87.23575" scale="10 10 10"
+            rotation="0 0 20" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass1" id="grass8" position="102.08347 -63.96846 -89.77487" scale="10 10 10"
+            rotation="0 0 20" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass3" id="grass11" position="-113.718 -11.241 -51.607" scale="10 10 10"
+            rotation="0 0 -14.52" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grasshopper" id="grasshopper" position="-77.312 -2.354 -35.625" scale="1000 1000 1000"
+            rotation="0 0 -14.52" color="#66FF6" animation-mixer></a-entity>
+
 
         <a-entity id="mushrooms-group1" rotation="0 -3.91 0" position="51.953 -12.022 -10.393">
-            <a-entity gltf-model="#mushrooms1" id="mushrooms1" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 0 -10" color="#66FF6" animation-mixer></a-entity>
-            <a-entity gltf-model="#mushrooms1" id="mushrooms1-2" position="1.13 0.20491 3.09986" scale="0.3 0.3 0.3" rotation="2.04 -127.67 -9.41" color="#66FF6" animation-mixer></a-entity>
-            <a-entity gltf-model="#mushrooms1" id="mushrooms1-3" position="1.43032 2.09018 0.93986" scale="0.2 0.2 0.2" rotation="0.34 -129.73 -10" color="#66FF6" animation-mixer></a-entity>
-            <a-entity gltf-model="#mushrooms1" id="mushrooms1-4" position="-6.23 3.36 5.17" scale="0.2 0.2 0.2" rotation="0.34 90 -10" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 0 -10"
+                color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-2" position="1.13 0.20491 3.09986" scale="0.3 0.3 0.3"
+                rotation="2.04 -127.67 -9.41" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-3" position="1.43032 2.09018 0.93986" scale="0.2 0.2 0.2"
+                rotation="0.34 -129.73 -10" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-4" position="-6.23 3.36 5.17" scale="0.2 0.2 0.2"
+                rotation="0.34 90 -10" color="#66FF6" animation-mixer></a-entity>
         </a-entity>
         <a-entity id="mushrooms-group2" rotation="0 20 0" position="48.303 -13.80074 -13.81965">
-            <a-entity gltf-model="#mushrooms1" id="mushrooms1" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 0 -10" color="#66FF6" animation-mixer></a-entity>
-            <a-entity gltf-model="#mushrooms1" id="mushrooms1-2" position="1.13 0.20491 3.09986" scale="0.3 0.3 0.3" rotation="2.04 -127.67 -9.41" color="#66FF6" animation-mixer></a-entity>
-            <a-entity gltf-model="#mushrooms1" id="mushrooms1-3" position="1.43032 2.09018 0.93986" scale="0.2 0.2 0.2" rotation="0.34 -129.73 -10" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 0 -10"
+                color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-2" position="1.13 0.20491 3.09986" scale="0.3 0.3 0.3"
+                rotation="2.04 -127.67 -9.41" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-3" position="1.43032 2.09018 0.93986" scale="0.2 0.2 0.2"
+                rotation="0.34 -129.73 -10" color="#66FF6" animation-mixer></a-entity>
         </a-entity>
         <a-entity id="mushrooms-group3" position="48.653 -16.852 -18.593">
-            <a-entity gltf-model="#mushrooms1" id="mushrooms1" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 0 -10" color="#66FF6" animation-mixer></a-entity>
-            <a-entity gltf-model="#mushrooms1" id="mushrooms1-2" position="1.13 0.20491 3.09986" scale="0.3 0.3 0.3" rotation="2.04 -127.67 -9.41" color="#66FF6" animation-mixer></a-entity>
-            <a-entity gltf-model="#mushrooms1" id="mushrooms1-3" position="1.43032 2.09018 0.93986" scale="0.2 0.2 0.2" rotation="0.34 -129.73 -10" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 0 -10"
+                color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-2" position="1.13 0.20491 3.09986" scale="0.3 0.3 0.3"
+                rotation="2.04 -127.67 -9.41" color="#66FF6" animation-mixer></a-entity>
+            <a-entity gltf-model="#mushrooms1" id="mushrooms1-3" position="1.43032 2.09018 0.93986" scale="0.2 0.2 0.2"
+                rotation="0.34 -129.73 -10" color="#66FF6" animation-mixer></a-entity>
         </a-entity>
-        <a-entity gltf-model="#mushrooms3" id="mushrooms3" position="-86.792 -12.074 -35.625" scale="1 1 1" rotation="10 100 -2.47" color ="#66FF6" animation-mixer></a-entity> 
-        <a-entity gltf-model="#flower" id="flower1" position="235.329 -184.655 433.74228" scale="22 22 22" rotation="0 119.34 -3.06" color="#66FF6" animation-mixer=""></a-entity>
-        <a-entity gltf-model="#flower" id="flower1-2" position="172.10041 -155.36307 496.58833" scale="22 22 22" rotation="0 119.34 -3.06" color="#66FF6" animation-mixer=""></a-entity>
-        <a-entity gltf-model="#flower" id="flower2" position="59.31803 -173.77514 418.34637" scale="20 20 20" rotation="0 112.6 -3.06" color="#66FF6" animation-mixer=""></a-entity>
-        <a-entity gltf-model="#butterfly1" id="#butterfly1" position="0 -30.34 79.11" scale="0.1 0.1 0.1" rotation="0.49 30 -3.06" color="#66FF6"  animation-mixer="clip: metarig|3; timeScale: 3"></a-entity>
-        <a-entity gltf-model="#butterfly1" id="#butterfly1.2" position="-14.43 -43.31 169.06" scale="0.1 0.1 0.1" delay="100"rotation="-15 60 -3.06" color="#66FF6"  animation-mixer="clip: metarig|3; timeScale: 2"></a-entity>
-        <a-entity gltf-model="#butterfly1" id="#butterfly1.3" rotation="-14.999999999999998 40 -3.06" position="26.02 -35.998 172.04" scale="0.1 0.1 0.1" delay="100"rotation="-15 60 -3.06" color="#66FF6"  animation-mixer="clip: metarig|!; timeScale: 2" loop = true></a-entity>
-        <a-entity gltf-model="#butterfly1" id="#butterfly1.4" position="38 -34.95 82.44" scale="0.1 0.1 0.1" rotation="0.49000000000000005 -20 -5.04" color="#66FF6"  animation-mixer="clip: metarig|2; timeScale: 3"></a-entity>
-        <a-entity gltf-model="#butterfly1" id="#butterfly1.5" position="36.13 -36.00057 120.71" scale="0.1 0.1 0.1" rotation="-59.99999999999999 -16.1 -2.4" color="#66FF6"  animation-mixer="clip: metarig|2; timeScale: 1"></a-entity>
+        <a-entity gltf-model="#mushrooms3" id="mushrooms3" position="-86.792 -12.074 -35.625" scale="1 1 1"
+            rotation="10 100 -2.47" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#flower" id="flower1" position="235.329 -184.655 433.74228" scale="22 22 22"
+            rotation="0 119.34 -3.06" color="#66FF6" animation-mixer=""></a-entity>
+        <a-entity gltf-model="#flower" id="flower1-2" position="172.10041 -155.36307 496.58833" scale="22 22 22"
+            rotation="0 119.34 -3.06" color="#66FF6" animation-mixer=""></a-entity>
+        <a-entity gltf-model="#flower" id="flower2" position="59.31803 -173.77514 418.34637" scale="20 20 20"
+            rotation="0 112.6 -3.06" color="#66FF6" animation-mixer=""></a-entity>
+        <a-entity gltf-model="#butterfly1" id="#butterfly1" position="0 -30.34 79.11" scale="0.1 0.1 0.1"
+            rotation="0.49 30 -3.06" color="#66FF6" animation-mixer="clip: metarig|3; timeScale: 3"></a-entity>
+        <a-entity gltf-model="#butterfly1" id="#butterfly1.2" position="-14.43 -43.31 169.06" scale="0.1 0.1 0.1"
+            delay="100" rotation="-15 60 -3.06" color="#66FF6"
+            animation-mixer="clip: metarig|3; timeScale: 2"></a-entity>
+        <a-entity gltf-model="#butterfly1" id="#butterfly1.3" rotation="-14.999999999999998 40 -3.06"
+            position="26.02 -35.998 172.04" scale="0.1 0.1 0.1" delay="100" rotation="-15 60 -3.06" color="#66FF6"
+            animation-mixer="clip: metarig|!; timeScale: 2" loop=true></a-entity>
+        <a-entity gltf-model="#butterfly1" id="#butterfly1.4" position="38 -34.95 82.44" scale="0.1 0.1 0.1"
+            rotation="0.49000000000000005 -20 -5.04" color="#66FF6"
+            animation-mixer="clip: metarig|2; timeScale: 3"></a-entity>
+        <a-entity gltf-model="#butterfly1" id="#butterfly1.5" position="36.13 -36.00057 120.71" scale="0.1 0.1 0.1"
+            rotation="-59.99999999999999 -16.1 -2.4" color="#66FF6"
+            animation-mixer="clip: metarig|2; timeScale: 1"></a-entity>
 
         <!-- Burung dengan animasi -->
-        <a-entity id="#birds" gltf-model="#birds" position="4.548 19.516 -63.79" scale="3 3 3" rotation="-5 2.93 10" 
-                  animation-mixer="clip: *; timeScale: 1 " 
-                  animation="property: position; to: 2.744 40 -300; dur: 20000; easingOut: linear; loop: true; pauseEvents: 30000; easeIn : linear ">  
+        <a-entity id="#birds" gltf-model="#birds" position="4.548 19.516 -63.79" scale="3 3 3" rotation="-5 2.93 10"
+            animation-mixer="clip: *; timeScale: 1 "
+            animation="property: position; to: 2.744 40 -300; dur: 20000; easingOut: linear; loop: true; pauseEvents: 30000; easeIn : linear ">
         </a-entity>
 
-        <a-entity id="#birds" gltf-model="#birds-2g" position="2 19.516 -63.79" scale="3 3 3" rotation="-5 2.93 10" 
-                  animation-mixer="clip: *; timeScale: 1 " 
-                  animation="property: position; to: 2.744 40 -300; dur: 20000; easingOut: linear; loop: true; pauseEvents: 30000; easeIn : linear ">  
+        <a-entity id="#birds" gltf-model="#birds-2g" position="2 19.516 -63.79" scale="3 3 3" rotation="-5 2.93 10"
+            animation-mixer="clip: *; timeScale: 1 "
+            animation="property: position; to: 2.744 40 -300; dur: 20000; easingOut: linear; loop: true; pauseEvents: 30000; easeIn : linear ">
+        </a-entity>
+
+        <a-entity id="subtitle-text"
+            text="value: ; color: yellow; align: center; width: 5; font: https://cdn.aframe.io/fonts/mozillavr.fnt"
+            position="0 1.5 -3"></a-entity>
+
+        </a-plane>
+        <!-- CAMERA -->
+        <a-camera id="camera" camera position="0 0 0">
+            <a-entity cursor="fuse: true; fuseTimeout: 2000" raycaster="objects: .clickable" position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat"
+                animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1; startEvents: fusing;"
+                animation__reset="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 300"></a-entity>
+        </a-camera>
+
+        <!-- OBJEK -->
+
+        <a-entity id="panels" position="-11 2 -10" rotation="0 45 0">
+            <!-- Objek a-plane dengan transisi masuk -->
+            <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
+                class="clickable" light="intensity: 0.2"
+                animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+                animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+                animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+                animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+                onclick="moveCamera('-11 2 -9', 'index.html')">
+            </a-plane>
+        </a-entity>
+        <a-entity id="panels" position="-4 2 -12.5" rotation="0 0 0">
+            <!-- Objek a-plane dengan transisi masuk -->
+            <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
+                class="clickable" light="intensity: 0.2"
+                animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+                animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+                animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+                animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+                onclick="moveCamera('-4 2 -11.5', 'EkosistemDetail.html')">
+            </a-plane>
+        </a-entity>
+
+        <a-entity id="panels" position="4 2 -12.5" rotation="0 0 0">
+            <!-- Objek a-plane dengan transisi masuk -->
+            <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
+                class="clickable" light="intensity: 0.2"
+                animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+                animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+                animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+                animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+                onclick="moveCamera('4 2 -11.5', 'RantaiMakanan.html')">
+            </a-plane>
         </a-entity>
 
 
+        <a-entity id="panels" position="11 2 -10" rotation="0 -45 0">
+            <!-- Objek a-plane dengan transisi masuk -->
+            <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
+                class="clickable" light="intensity: 0.2"
+                animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+                animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+                animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+                animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+                onclick="moveCamera('11 2 -9', 'InteraksiAM.html')">
+            </a-plane>
+        </a-entity>
+    </a-scene>
 
-           </a-plane>
-       <!-- CAMERA -->
-       <a-camera id="camera" camera position="0 0 0">
-           <a-entity
-             cursor="fuse: true; fuseTimeout: 2000"
-             raycaster="objects: .clickable"
-             position="0 0 -1"
-             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-             material="color: black; shader: flat"
-             animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1; startEvents: fusing;"
-             animation__reset="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 300"
-           ></a-entity>
-       </a-camera>
+    <div id="subtitle"></div>
 
-       <!-- OBJEK -->
-
-       <a-entity id="panels" position="-11 2 -10" rotation="0 45 0" >
-           <!-- Objek a-plane dengan transisi masuk -->
-           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
-             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
-             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
-             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
-             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
-             onclick="moveCamera('-11 2 -9', 'index.html')">
-           </a-plane>
-       </a-entity>
-       <a-entity id="panels" position="-4 2 -12.5" rotation="0 0 0">
-           <!-- Objek a-plane dengan transisi masuk -->
-           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
-             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
-             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
-             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
-             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
-             onclick="moveCamera('-4 2 -11.5', 'EkosistemDetail.html')">
-           </a-plane>
-       </a-entity>
-
-       <a-entity id="panels" position="4 2 -12.5" rotation="0 0 0">
-           <!-- Objek a-plane dengan transisi masuk -->
-           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
-             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
-             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
-             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
-             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
-             onclick="moveCamera('4 2 -11.5', 'RantaiMakanan.html')">
-           </a-plane>
-       </a-entity>
+    <!-- Materi 1 -->
+    <script src="../script/script-1.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const subtitle = document.getElementById('subtitle');
+            const audio = document.getElementById('voice-over');
+            const scene = document.querySelector('a-scene');
+            const camera = document.getElementById('camera');
 
 
-       <a-entity id="panels" position="11 2 -10" rotation="0 -45 0" >
-           <!-- Objek a-plane dengan transisi masuk -->
-           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
-             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
-             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
-             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
-             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
-             onclick="moveCamera('11 2 -9', 'InteraksiAM.html')">
-           </a-plane>
-       </a-entity>
+            // Coba menambahkan klik untuk mengizinkan pemutaran audio
+            scene.addEventListener('click', () => {
+                audio.muted = false;
+                audio.play().catch(error => {
+                    console.log("Playback error:", error);
+                });
+            });
+
+            scene.addEventListener('loaded', () => {
+                console.log("All assets have been loaded.");
+
+                audio.addEventListener('timeupdate', () => {
+                    const currentTime = audio.currentTime;
+                    const currentSubtitle = Script.find(sub => currentTime >= sub.start && currentTime <= sub.end);
+
+                    if (currentSubtitle) {
+                        subtitle.textContent = currentSubtitle.text;
+                    } else {
+                        subtitle.textContent = '';
+                    }
+
+                    if (currentTime >= 0 && currentTime < 5) {
+                        // Animasi rotasi bersamaan (misal, memutar ke sudut tertentu)
+
+                        // Animasi pertama: Kamera bergerak ke posisi tertentu
+                        camera.setAttribute('animation', {
+                            property: 'position',
+                            to: '2 1.6 -5',
+                            dur: 5000,
+                            easing: 'easeInOutQuad'
+                        });
 
 
-        
-        </a-scene>
+                    } else if (currentTime >= 5 && currentTime < 10) {
+                        // Animasi kedua: Kamera berputar
+                        camera.setAttribute('look-controls', 'enabled', false);
+                        camera.setAttribute('animation', {
+                            property: 'rotation',
+                            to: '0 45 0',
+                            dur: 5000,
+                            easing: 'easeInOutQuad'
+                        });
 
-        </body>
+                        camera.setAttribute('animation__rotate', {
+                            property: 'rotation',
+                            to: '0 30 0',
+                            dur: 5000,
+                            easing: 'easeInOutQuad',
+                            loop: false,
+                            autoplay: true
+                        });
 
-        </html>
-
-
-
-   
-
-            <!-- Untuk Panels Ekosistem -->
+                    } else if (currentTime >= 10 && currentTime < 15) {
+                        // Animasi ketiga: Zoom in (dekatkan kamera)
+                        camera.setAttribute('rotation', '0 30 0'); // memperbarui rotasi kamera sesuai dengan kejadian sebelumnya
+                        camera.setAttribute('animation', {
+                            property: 'position',
+                            to: '1 1.6 -2',
+                            dur: 5000,
+                            easing: 'easeInOutQuad'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- Untuk Panels Ekosistem -->
     <script>
         // Fungsi untuk menggerakkan kamera dengan input parameter 'to' dan 'targetPage'
         function moveCamera(toPosition, targetPage) {
@@ -195,17 +312,18 @@
                 dur: 1500,
                 easing: 'easeInOutQuad'
             });
-    
+
             // Setelah animasi selesai, alihkan ke halaman yang ditentukan
-            setTimeout(function() {
+            setTimeout(function () {
                 window.location.href = targetPage;
             }, 1500);  // Menunggu animasi selesai (1.5 detik)
         }
-    
+
         // Reset posisi kamera ke posisi awal saat halaman dimuat
-        window.onload = function() {
+        window.onload = function () {
             document.querySelector('#camera').setAttribute('position', '0 0 0');
         };
     </script>
- 
-        
+</body>
+
+</html>
