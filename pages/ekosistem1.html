@@ -32,7 +32,7 @@
         <a-assets>
             <img id="point1" src="/assets/ekosistem1.webp" />
             <audio id="background-music" src="/assets/suara_alam.mp3" muted="" playsinline=""></audio>
-            <audio id="voice-over" src="/assets/voice-over/Script-1.mp3"  muted="" playsinline=""></audio>
+            <audio id="voice-over" src="/assets/voice-over/Script-1.mp3" muted="" playsinline=""></audio>
             <a-asset-item id="deer" src="/assets/deer_idle/scene.gltf"></a-asset-item>
             <a-asset-item id="grass1" src="/assets/grass3/scene.gltf"></a-asset-item>
             <a-asset-item id="grass2" src="/assets/grass3/scene.gltf"></a-asset-item>
@@ -73,22 +73,32 @@
         <a-light type="directional" color="#FFFF" intensity="5"></a-light>
 
         <!-- CAMERA 1 -->
-                <a-camera id="camera"  position="0 1.6 0"></a-camera>
+        <a-camera id="camera" position="0 1.6 0"></a-camera>
 
         </a-plane>
 
         <!-- OBJEK -->
-        <a-entity gltf-model="#deer" id="deer1" position="15 -10 -15" scale="2 2 2" rotation="0 -120 0" animation-mixer></a-entity>
-        <a-entity gltf-model="#orchid" id="#orchid" position="145.824 180 45.422" scale="30 30 30" rotation="136.26 155 291.45" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#orchid" id="#orchid2" position="-102.731 220.875 354.32" scale="40 40 40" rotation="4.72 -103.86 117.46" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass1" id="grass1" position="-130.51 -10.667 4" scale="10 10 10" rotation="0 0 -25.51" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass2" id="grass2" position="-105 -10 -12.65559" scale="10 10 10" rotation="0 0 -20.62" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass3" id="grass3" position="-95 -10 -29.63889" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass4" id="grass7" position="81.64138 -55.91131 -87.23575" scale="10 10 10" rotation="0 0 20" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass1" id="grass8" position="102.08347 -63.96846 -89.77487" scale="10 10 10" rotation="0 0 20" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grass3" id="grass11" position="-113.718 -11.241 -51.607" scale="10 10 10" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
-        <a-entity gltf-model="#grasshopper" id="grasshopper" position="-77.312 -2.354 -35.625" scale="1000 1000 1000" rotation="0 0 -14.52" color ="#66FF6"animation-mixer></a-entity>
-        
+        <a-entity gltf-model="#deer" id="deer1" position="15 -10 -15" scale="2 2 2" rotation="0 -120 0"
+            animation-mixer></a-entity>
+        <a-entity gltf-model="#orchid" id="#orchid" position="145.824 180 45.422" scale="30 30 30"
+            rotation="136.26 155 291.45" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#orchid" id="#orchid2" position="-102.731 220.875 354.32" scale="40 40 40"
+            rotation="4.72 -103.86 117.46" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass1" id="grass1" position="-130.51 -10.667 4" scale="10 10 10" rotation="0 0 -25.51"
+            color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass2" id="grass2" position="-105 -10 -12.65559" scale="10 10 10" rotation="0 0 -20.62"
+            color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass3" id="grass3" position="-95 -10 -29.63889" scale="10 10 10" rotation="0 0 -14.52"
+            color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass4" id="grass7" position="81.64138 -55.91131 -87.23575" scale="10 10 10"
+            rotation="0 0 20" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass1" id="grass8" position="102.08347 -63.96846 -89.77487" scale="10 10 10"
+            rotation="0 0 20" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grass3" id="grass11" position="-113.718 -11.241 -51.607" scale="10 10 10"
+            rotation="0 0 -14.52" color="#66FF6" animation-mixer></a-entity>
+        <a-entity gltf-model="#grasshopper" id="grasshopper" position="-77.312 -2.354 -35.625" scale="1000 1000 1000"
+            rotation="0 0 -14.52" color="#66FF6" animation-mixer></a-entity>
+
 
         <a-entity id="mushrooms-group1" rotation="0 -3.91 0" position="51.953 -12.022 -10.393">
             <a-entity gltf-model="#mushrooms1" id="mushrooms1" position="0 0 0" scale="0.3 0.3 0.3" rotation="0 0 -10"
@@ -154,16 +164,76 @@
             text="value: ; color: yellow; align: center; width: 5; font: https://cdn.aframe.io/fonts/mozillavr.fnt"
             position="0 1.5 -3"></a-entity>
 
-        <div id="subtitle"></div>
+        </a-plane>
+        <!-- CAMERA -->
+        <a-camera id="camera" camera position="0 0 0">
+            <a-entity cursor="fuse: true; fuseTimeout: 2000" raycaster="objects: .clickable" position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: black; shader: flat"
+                animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1; startEvents: fusing;"
+                animation__reset="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 300"></a-entity>
+        </a-camera>
 
-        <!-- Materi 1 -->
-        <script src="../script/script-1.js"></script>
-        <script>
+        <!-- OBJEK -->
+
+        <a-entity id="panels" position="-11 2 -10" rotation="0 45 0">
+            <!-- Objek a-plane dengan transisi masuk -->
+            <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
+                class="clickable" light="intensity: 0.2"
+                animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+                animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+                animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+                animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+                onclick="moveCamera('-11 2 -9', 'index.html')">
+            </a-plane>
+        </a-entity>
+        <a-entity id="panels" position="-4 2 -12.5" rotation="0 0 0">
+            <!-- Objek a-plane dengan transisi masuk -->
+            <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
+                class="clickable" light="intensity: 0.2"
+                animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+                animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+                animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+                animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+                onclick="moveCamera('-4 2 -11.5', 'EkosistemDetail.html')">
+            </a-plane>
+        </a-entity>
+
+        <a-entity id="panels" position="4 2 -12.5" rotation="0 0 0">
+            <!-- Objek a-plane dengan transisi masuk -->
+            <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
+                class="clickable" light="intensity: 0.2"
+                animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+                animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+                animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+                animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+                onclick="moveCamera('4 2 -11.5', 'RantaiMakanan.html')">
+            </a-plane>
+        </a-entity>
+
+
+        <a-entity id="panels" position="11 2 -10" rotation="0 -45 0">
+            <!-- Objek a-plane dengan transisi masuk -->
+            <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
+                class="clickable" light="intensity: 0.2"
+                animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
+                animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
+                animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
+                animation__fade="property: opacity; from: 0; to: 1; dur: 500"
+                onclick="moveCamera('11 2 -9', 'InteraksiAM.html')">
+            </a-plane>
+        </a-entity>
+    </a-scene>
+
+    <div id="subtitle"></div>
+
+    <!-- Materi 1 -->
+    <script src="../script/script-1.js"></script>
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
             const subtitle = document.getElementById('subtitle');
             const audio = document.getElementById('voice-over');
             const scene = document.querySelector('a-scene');
-            const camera = document.getElementById('camera'); 
+            const camera = document.getElementById('camera');
 
 
             // Coba menambahkan klik untuk mengizinkan pemutaran audio
@@ -188,126 +258,51 @@
                     }
 
                     if (currentTime >= 0 && currentTime < 5) {
-                // Animasi rotasi bersamaan (misal, memutar ke sudut tertentu)
+                        // Animasi rotasi bersamaan (misal, memutar ke sudut tertentu)
 
-                // Animasi pertama: Kamera bergerak ke posisi tertentu
-                camera.setAttribute('animation', {
-                    property: 'position',
-                    to: '2 1.6 -5',
-                    dur: 5000,
-                    easing: 'easeInOutQuad'
-                });
+                        // Animasi pertama: Kamera bergerak ke posisi tertentu
+                        camera.setAttribute('animation', {
+                            property: 'position',
+                            to: '2 1.6 -5',
+                            dur: 5000,
+                            easing: 'easeInOutQuad'
+                        });
 
 
-                } else if (currentTime >= 5 && currentTime < 10) {
-                    // Animasi kedua: Kamera berputar
-                    camera.setAttribute('look-controls', 'enabled', false);
-                    camera.setAttribute('animation', {
-                        property: 'rotation',
-                        to: '0 45 0',
-                        dur: 5000,
-                        easing: 'easeInOutQuad'
-                    });
+                    } else if (currentTime >= 5 && currentTime < 10) {
+                        // Animasi kedua: Kamera berputar
+                        camera.setAttribute('look-controls', 'enabled', false);
+                        camera.setAttribute('animation', {
+                            property: 'rotation',
+                            to: '0 45 0',
+                            dur: 5000,
+                            easing: 'easeInOutQuad'
+                        });
 
-                    camera.setAttribute('animation__rotate', {
-                    property: 'rotation',
-                    to: '0 30 0',
-                    dur: 5000,
-                    easing: 'easeInOutQuad',
-                    loop: false,
-                    autoplay: true
-                });
-                
-                } else if (currentTime >= 10 && currentTime < 15) {
-                    // Animasi ketiga: Zoom in (dekatkan kamera)
-                    camera.setAttribute('rotation', '0 30 0'); // memperbarui rotasi kamera sesuai dengan kejadian sebelumnya
-                    camera.setAttribute('animation', {
-                        property: 'position',
-                        to: '1 1.6 -2',
-                        dur: 5000,
-                        easing: 'easeInOutQuad'
-                    });
-                }
+                        camera.setAttribute('animation__rotate', {
+                            property: 'rotation',
+                            to: '0 30 0',
+                            dur: 5000,
+                            easing: 'easeInOutQuad',
+                            loop: false,
+                            autoplay: true
+                        });
+
+                    } else if (currentTime >= 10 && currentTime < 15) {
+                        // Animasi ketiga: Zoom in (dekatkan kamera)
+                        camera.setAttribute('rotation', '0 30 0'); // memperbarui rotasi kamera sesuai dengan kejadian sebelumnya
+                        camera.setAttribute('animation', {
+                            property: 'position',
+                            to: '1 1.6 -2',
+                            dur: 5000,
+                            easing: 'easeInOutQuad'
+                        });
+                    }
                 });
             });
         });
-        </script>
-</body>
-
-
-           </a-plane>
-       <!-- CAMERA -->
-       <a-camera id="camera" camera position="0 0 0">
-           <a-entity
-             cursor="fuse: true; fuseTimeout: 2000"
-             raycaster="objects: .clickable"
-             position="0 0 -1"
-             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-             material="color: black; shader: flat"
-             animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1; startEvents: fusing;"
-             animation__reset="property: scale; to: 1 1 1; startEvents: mouseleave; dur: 300"
-           ></a-entity>
-       </a-camera>
-
-       <!-- OBJEK -->
-
-       <a-entity id="panels" position="-11 2 -10" rotation="0 45 0" >
-           <!-- Objek a-plane dengan transisi masuk -->
-           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
-             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
-             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
-             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
-             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
-             onclick="moveCamera('-11 2 -9', 'index.html')">
-           </a-plane>
-       </a-entity>
-       <a-entity id="panels" position="-4 2 -12.5" rotation="0 0 0">
-           <!-- Objek a-plane dengan transisi masuk -->
-           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
-             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
-             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
-             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
-             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
-             onclick="moveCamera('-4 2 -11.5', 'EkosistemDetail.html')">
-           </a-plane>
-       </a-entity>
-
-       <a-entity id="panels" position="4 2 -12.5" rotation="0 0 0">
-           <!-- Objek a-plane dengan transisi masuk -->
-           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
-             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
-             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
-             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
-             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
-             onclick="moveCamera('4 2 -11.5', 'RantaiMakanan.html')">
-           </a-plane>
-       </a-entity>
-
-
-       <a-entity id="panels" position="11 2 -10" rotation="0 -45 0" >
-           <!-- Objek a-plane dengan transisi masuk -->
-           <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;" class="clickable" light="intensity: 0.2"
-             animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
-             animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
-             animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
-             animation__fade="property: opacity; from: 0; to: 1; dur: 500"
-             onclick="moveCamera('11 2 -9', 'InteraksiAM.html')">
-           </a-plane>
-       </a-entity>
-
-
-        
-        </a-scene>
-
-        </body>
-
-        </html>
-
-
-
-   
-
-            <!-- Untuk Panels Ekosistem -->
+    </script>
+    <!-- Untuk Panels Ekosistem -->
     <script>
         // Fungsi untuk menggerakkan kamera dengan input parameter 'to' dan 'targetPage'
         function moveCamera(toPosition, targetPage) {
@@ -318,17 +313,18 @@
                 dur: 1500,
                 easing: 'easeInOutQuad'
             });
-    
+
             // Setelah animasi selesai, alihkan ke halaman yang ditentukan
-            setTimeout(function() {
+            setTimeout(function () {
                 window.location.href = targetPage;
             }, 1500);  // Menunggu animasi selesai (1.5 detik)
         }
-    
+
         // Reset posisi kamera ke posisi awal saat halaman dimuat
-        window.onload = function() {
+        window.onload = function () {
             document.querySelector('#camera').setAttribute('position', '0 0 0');
         };
     </script>
- 
-        
+</body>
+
+</html>
