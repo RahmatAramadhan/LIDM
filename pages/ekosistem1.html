@@ -174,10 +174,9 @@
 
         <!-- OBJEK -->
 
-        <a-entity id="panels" position="-11 2 -10" rotation="0 45 0">
-            <!-- Objek a-plane dengan transisi masuk -->
+        <a-entity id="panels" visible="false" position="-11 2 -10" rotation="0 45 0">
             <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
-                class="clickable" light="intensity: 0.2"
+                light="intensity: 0.2" id="panel-plane"
                 animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
                 animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
                 animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
@@ -185,10 +184,9 @@
                 onclick="moveCamera('-11 2 -9', 'index.html')">
             </a-plane>
         </a-entity>
-        <a-entity id="panels" position="-4 2 -12.5" rotation="0 0 0">
-            <!-- Objek a-plane dengan transisi masuk -->
+        <a-entity id="panels" visible="false" position="-4 2 -12.5" rotation="0 0 0">
             <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
-                class="clickable" light="intensity: 0.2"
+                light="intensity: 0.2" id="panel-plane"
                 animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
                 animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
                 animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
@@ -197,10 +195,9 @@
             </a-plane>
         </a-entity>
 
-        <a-entity id="panels" position="4 2 -12.5" rotation="0 0 0">
-            <!-- Objek a-plane dengan transisi masuk -->
+        <a-entity id="panels" visible="false" position="4 2 -12.5" rotation="0 0 0">
             <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
-                class="clickable" light="intensity: 0.2"
+                light="intensity: 0.2" id="panel-plane"
                 animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
                 animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
                 animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
@@ -209,11 +206,9 @@
             </a-plane>
         </a-entity>
 
-
-        <a-entity id="panels" position="11 2 -10" rotation="0 -45 0">
-            <!-- Objek a-plane dengan transisi masuk -->
+        <a-entity id="panels" visible="false" position="11 2 -10" rotation="0 -45 0">
             <a-plane position="0 0 -5" width="6" height="6" material="src:/assets/Papan/EKOSISTEM.png;"
-                class="clickable" light="intensity: 0.2"
+                light="intensity: 0.2" id="panel-plane"
                 animation__scaleUp="startEvents:mouseenter; property: scale; to: 1.2 1.2 1.2; dur: 250;"
                 animation__scaleDown="startEvents:mouseleave; property: scale; to: 1 1 1; dur: 250;"
                 animation="property: position; to: 0 0 0; dur: 1500; easing: easeInOutQuad"
@@ -233,18 +228,19 @@
             const audio = document.getElementById('voice-over');
             const scene = document.querySelector('a-scene');
             const camera = document.getElementById('camera');
-
-
-            // Coba menambahkan klik untuk mengizinkan pemutaran audio
-            scene.addEventListener('click', () => {
-                audio.muted = false;
-                audio.play().catch(error => {
-                    console.log("Playback error:", error);
-                });
-            });
+            const panels = document.getElementById('panels');
+            const panelPlane = document.getElementById('panel-plane');
+            const initialPosition = camera.getAttribute('position');
+            const initialRotation = camera.getAttribute('rotation');
 
             scene.addEventListener('loaded', () => {
                 console.log("All assets have been loaded.");
+                setTimeout(() => {
+                    audio.muted = false;
+                    audio.play().catch(error => {
+                        console.log("Playback error:", error);
+                    });
+                }, 2000);
 
                 audio.addEventListener('timeupdate', () => {
                     const currentTime = audio.currentTime;
@@ -255,57 +251,26 @@
                     } else {
                         subtitle.textContent = '';
                     }
+                });
 
-                    if (currentTime >= 0 && currentTime < 5) {
-                        // Animasi rotasi bersamaan (misal, memutar ke sudut tertentu)
+                audio.addEventListener('ended', () => {
+                    const panelPlanes = document.querySelectorAll('#panels a-plane');
+                    panelPlanes.forEach(plane => {
+                        plane.classList.add('clickable');
+                    });
 
-                        // Animasi pertama: Kamera bergerak ke posisi tertentu
-                        camera.setAttribute('animation', {
-                            property: 'position',
-                            to: '2 1.6 -5',
-                            dur: 5000,
-                            easing: 'easeInOutQuad'
-                        });
+                    const panels = document.querySelectorAll('#panels');
+                    panels.forEach(panel => {
+                        panel.setAttribute('visible', 'true');
+                    });
 
-
-                    } else if (currentTime >= 5 && currentTime < 10) {
-                        // Animasi kedua: Kamera berputar
-                        camera.setAttribute('look-controls', 'enabled', false);
-                        camera.setAttribute('animation', {
-                            property: 'rotation',
-                            to: '0 45 0',
-                            dur: 5000,
-                            easing: 'easeInOutQuad'
-                        });
-
-                        camera.setAttribute('animation__rotate', {
-                            property: 'rotation',
-                            to: '0 30 0',
-                            dur: 5000,
-                            easing: 'easeInOutQuad',
-                            loop: false,
-                            autoplay: true
-                        });
-
-                    } else if (currentTime >= 10 && currentTime < 15) {
-                        // Animasi ketiga: Zoom in (dekatkan kamera)
-                        camera.setAttribute('rotation', '0 30 0'); // memperbarui rotasi kamera sesuai dengan kejadian sebelumnya
-                        camera.setAttribute('animation', {
-                            property: 'position',
-                            to: '1 1.6 -2',
-                            dur: 5000,
-                            easing: 'easeInOutQuad'
-                        });
-                    }
+                    console.log("Audio has ended.");
                 });
             });
         });
     </script>
-    <!-- Untuk Panels Ekosistem -->
     <script>
-        // Fungsi untuk menggerakkan kamera dengan input parameter 'to' dan 'targetPage'
         function moveCamera(toPosition, targetPage) {
-            // Animasi kamera menuju a-plane dengan posisi yang ditentukan
             document.querySelector('#camera').setAttribute('animation', {
                 property: 'position',
                 to: toPosition,
@@ -313,13 +278,11 @@
                 easing: 'easeInOutQuad'
             });
 
-            // Setelah animasi selesai, alihkan ke halaman yang ditentukan
             setTimeout(function () {
                 window.location.href = targetPage;
-            }, 1500);  // Menunggu animasi selesai (1.5 detik)
+            }, 1500);
         }
 
-        // Reset posisi kamera ke posisi awal saat halaman dimuat
         window.onload = function () {
             document.querySelector('#camera').setAttribute('position', '0 0 0');
         };
